@@ -1,10 +1,17 @@
 
-import "./App.css";
-// import Modes from "./components/Modes";
-// import Navbar from "./components/Navbar";
+import About from "./components/About";
 import Navbar from "./components/Navbar1";
 import Form from "./components/Form";
-import React, { useState } from "react";
+import { useState } from "react";
+// import { Route, Routes} from "react-router-dom";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 
 function App() {
@@ -23,11 +30,19 @@ function App() {
 
   return (
     <>
-      <div className="container-fluid">
-        <Navbar title="PropTitleHere" mode={mode} toggleMode={toggleMode} />
-        <Form title="Write Something Here" mode={mode} />
-        {/* <Modes /> */}
-      </div>
+      <Router>
+        <Navbar title="Utils" mode={mode} toggleMode={toggleMode} />
+        <div className="container-fluid mt-2">
+          <Switch>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route  exact path="/">
+              <Form title="Write Something Here" mode={mode} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </>
   );
 }
