@@ -1,13 +1,16 @@
 import React from 'react';
 import Ex2 from './Ex2';
 import Car from './Car';
-import Forms from './Forms'; import { useState, createContext, useContext } from "react";
+import Forms from './Forms';
+import { createContext, useState ,useContext} from "react";
+import MissedGoal from './MissedGoal';
 
 const UserContext = createContext();
 
+
 export default function Ex(props) {
 
-    const [user, setUser] = useState("Jesse Hall");
+    const [user, setUser] = useState("Prasad######");
 
     let myobj = {
         name: "sarella sai durga prasad",
@@ -40,10 +43,13 @@ export default function Ex(props) {
 
     return (
         <>
-            <UserContext.Provider value={user}>
-                <h1>{`Hello ${user}!`}</h1>
-                <Ex2 />
+        <div>
+        <UserContext.Provider value={user}>
+                <h1>{`Hello first time : ${user}!`}</h1>
+                {/* <Forms/> */}
             </UserContext.Provider>
+        </div>
+        
 
             <h1>IAM Ex</h1>
             {/* <button className='btn btn-danger' onClick={ () => shoot("hai comando")}>click</button> */}
@@ -55,20 +61,26 @@ export default function Ex(props) {
                 <h1>{usingJsx}</h1>
                 <h1>{5 + 100}</h1>
             </div>
-            <ul>
+            <div style={{display:"inline-block"}}> <ul >
                 <li>Apples</li>
                 <li>Bananas</li>
                 <li>Cherries</li>
-            </ul>
+            </ul></div>
+            <br />
+           
             <input className='hi' type="text" />
             <h1 style={{ color: props.color }}>if else output : {biNum}</h1>
             <h1>if else output :{100 > 200 ? "bigger" : "Smaller"}</h1>
             <h1>Who lives in my garage?</h1>
-            <ul>
+            <ul style={{display:"inline-block"}}>
                 {cars1.map((ele) => <Car brand={ele.brand} key={ele.id} />)}
             </ul>
 
             <Forms />
+
+           
         </>
     );
+
 }
+

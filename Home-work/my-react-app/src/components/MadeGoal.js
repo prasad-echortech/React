@@ -5,10 +5,9 @@ function MadeGoal() {
   return (
 
     <>
-      <MissedGoal />
+      {/* <MissedGoal /> */}
       <div>
         <h1>iam MadeGoal</h1>
-
       </div>
     </>
   );

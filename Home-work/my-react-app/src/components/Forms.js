@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState , useContext } from 'react';
+import UserContext from "./Ex"
 
 function Forms() {
     //     const [name, setName] = useState("");
@@ -20,9 +21,11 @@ function Forms() {
         console.log(inputs);
         alert(inputs);
     }
+    const user = useContext(UserContext);
     return (
         <div>
             <h1>IAm Forms</h1>
+            <h2>{`Hello ${user} again!`}</h2>
             {/* <form onSubmit={handlefun}>
                 <div className="mb-3">
                     enter youtr name:<input type="text" className="form-control" value={name} onChange={(e) => {
@@ -42,7 +45,9 @@ function Forms() {
                 </div>
                 <button type="submit">submit</button>
             </form>
+
         </div>
+        
     );
 }
 

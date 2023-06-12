@@ -11,7 +11,7 @@ function Goal(props) {
 
     return (
         <>
-            <MadeGoal />
+            {/* <MadeGoal /> */}
             <div>
                 <h1>Iam Just A Goal</h1>
                 <h1>{isGoal ? <MadeGoal /> : <MissedGoal />}</h1>

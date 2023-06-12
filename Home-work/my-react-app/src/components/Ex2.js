@@ -6,7 +6,7 @@ export default function Ex2(props) {
   let carsData = props.cars;
   return (
     <>
-      <Goal />
+      <Goal/>
       <div>
         <h1>Hi IAM EX2</h1>
         <h1>iam component 2 :  {props.greetings}</h1>

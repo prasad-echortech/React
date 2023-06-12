@@ -1,17 +1,21 @@
-import React from 'react';
 
+import Ex from "./Ex";
 function Car(props) {
     return (
-       
-        <div>
-            
-            <li>
-               {props.brand}
-          
-            </li>
-          
-        </div>
-     
+
+        <>
+
+            <div>
+
+                <li>
+                    {props.brand}
+                </li>
+
+            </div>
+
+        </>
+
+
     );
 }
 
