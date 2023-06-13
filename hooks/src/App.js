@@ -4,6 +4,7 @@ import Us from './components/Us';
 import Ue from './components/Ue';
 import Uc from "./components/Uc"
 import Uc1 from "./components/Uc1"
+import Ur from "./components/Ur"
 
 
 
@@ -14,6 +15,7 @@ function App() {
       <Ue />
      <Uc/>
      <Uc1/>
+     <Ur/>
     </div>
   );
 }
