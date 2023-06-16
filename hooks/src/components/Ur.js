@@ -36,8 +36,6 @@ export default function Ur() {
             <h1>my name is {name} and it is used to be {prevName.current}</h1>
             {/* <h1>i rendered {renderCount.current}</h1> */}
             {/* <button onClick={focus}>focus</button> */}
-
-
         </div>
     );
 }

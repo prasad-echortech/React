@@ -14,8 +14,6 @@ export default function Uc1() {
         </div>
     );
 }
-
-
 function Component2() {
     return (
         <>
