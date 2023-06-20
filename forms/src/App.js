@@ -7,9 +7,12 @@ import Textarea from "./form-elements/Textarea";
 import Radio from "./form-elements/Radio";
 import Home from "./form-elements/Home"
 import Error from "./form-elements/Error";
+// import AnotherComponent from './form-elements/AnotherComponent';
+import FF from './form-elements/FF';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
+
   return (
     <>
       <BrowserRouter>
@@ -21,6 +24,8 @@ export default function App() {
           <Route path="Radio" element={<Radio />} />
           <Route path="Checkbox" element={<Checkbox />} />
           <Route path="Textarea" element={<Textarea />} />
+          <Route path="ff" element={<FF />} />
+          <Route path="ff/:id" element={<FF />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>

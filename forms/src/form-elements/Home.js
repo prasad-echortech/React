@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Text from "./Text";
 import Dropdown from "./Dropdown";
 import Checkbox from "./Checkbox";
@@ -13,9 +13,31 @@ let components = {
     dropdown: Dropdown,
 };
 
-export default function Home() {
-
+export default function Home({formData}) {
+    const [inputs, setinputs] = useState({});
     const [activeComponent, setActiveComponent] = useState(null);
+
+    const previousInputValue = useRef({});
+
+    useEffect(() => {
+        previousInputValue.current = inputs;
+    }, [inputs]);
+
+    const handleChange = (event => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setinputs(values => ({ ...values, [name]: value }))
+    })
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        fetch(' http://localhost:3000/father', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(previousInputValue.current)
+        })
+    }
 
     const handleClick = (component) => {
         setActiveComponent(component)
@@ -23,33 +45,32 @@ export default function Home() {
 
     return (
         <>
-       <div className="row">
-            <div className="col-1">
-                {Object.keys(components).map((compkey) => (
+            <div className="row ">
+                <div className="col-1 container ">
+                    {Object.keys(components).map((compkey) => (
+                        <button key={compkey} className="btn btn-success  d-flex flex-row  mt-5 ms-5 justify-content-center"
+                            onClick={() => handleClick(compkey)} style={{ width: "120px" }}>
+                            {compkey.toUpperCase()}
+                        </button>
+                    ))}
 
-                    <button key={compkey} className="btn btn-success m-1 d-flex flex-row  mt-5 ms-5" onClick={() => handleClick(compkey)} >
-                        {compkey.toUpperCase()}
-                    </button>
-                    
-                ))}
-               
-                </div> 
-           
-                <div className="col-7">
+
+                    <form onSubmit={handleSubmit}>
+
+                        <label>Form Name</label>
+                        <input type="text" name="formName" value={inputs.formName || ''} onChange={handleChange} />
+                        <label>FormDesc</label>
+                        <textarea id="" cols="30" rows="3" name="formDesc" value={inputs.formDesc || ''} onChange={handleChange} ></textarea>
+                        <button className="btn btn-success" type="submit">Save-Form</button>
+
+                    </form>
+
+                </div>
+                <div className="col-8 mt-1">
                     {activeComponent && React.createElement(components[activeComponent])}
                 </div>
+            </div>
 
-                <div className="col-5 d-flex justify-content-center mb-3">
-                            <label htmlFor="exampleInputEmail1" className="form-label">Form Name</label>
-                            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                        </div>
-
-                        <div className="col-5 d-flex justify-content-center mb-3">
-                        <textarea className="form-control" id="floatingTextarea2" style={{ height: "100px" }}></textarea>
-                        <label htmlFor="floatingTextarea2">Enter Text Here</label>
-                    </div>
-                </div>
-        
         </>
     );
 }
